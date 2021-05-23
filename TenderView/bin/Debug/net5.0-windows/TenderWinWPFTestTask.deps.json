@@ -1,0 +1,127 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "TenderWinWPFTestTask/1.0.0": {
+        "dependencies": {
+          "AngleSharp": "1.0.0-alpha-844",
+          "AsyncAwaitBestPractices.MVVM": "5.1.0",
+          "System.Windows.Interactivity.WPF": "2.0.20525"
+        },
+        "runtime": {
+          "TenderWinWPFTestTask.dll": {}
+        }
+      },
+      "AngleSharp/1.0.0-alpha-844": {
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AngleSharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AsyncAwaitBestPractices/5.1.0": {
+        "runtime": {
+          "lib/netstandard2.1/AsyncAwaitBestPractices.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AsyncAwaitBestPractices.MVVM/5.1.0": {
+        "dependencies": {
+          "AsyncAwaitBestPractices": "5.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/AsyncAwaitBestPractices.MVVM.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/2.0.0": {},
+      "System.Runtime.CompilerServices.Unsafe/4.5.0": {},
+      "System.Text.Encoding.CodePages/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+        }
+      },
+      "System.Windows.Interactivity.WPF/2.0.20525": {
+        "runtime": {
+          "lib/net40/Microsoft.Expression.Interactions.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "2.0.20525.0"
+          },
+          "lib/net40/System.Windows.Interactivity.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "2.0.20525.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TenderWinWPFTestTask/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AngleSharp/1.0.0-alpha-844": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gQ/S3ZClscQJvFpyc8pRa75cRDMolqJ1TjIrRii9REPwI8w4hVGPM9Bdx+ONBnj56HFmCUAzLKSi+KUIFohXjA==",
+      "path": "anglesharp/1.0.0-alpha-844",
+      "hashPath": "anglesharp.1.0.0-alpha-844.nupkg.sha512"
+    },
+    "AsyncAwaitBestPractices/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hRPwbZRrbCRlMYelzAh5AVtw43iMAatdVRm7llQ1MnAFSVjt7wZkd8LRUnxumBKxgOhWKb+jCV2bmippx9QfJA==",
+      "path": "asyncawaitbestpractices/5.1.0",
+      "hashPath": "asyncawaitbestpractices.5.1.0.nupkg.sha512"
+    },
+    "AsyncAwaitBestPractices.MVVM/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-l8xxMjFzkNzUGpx2SJzYHj9jxUyI63Uq5SRmb+UdOpmb5qOPlcy/8VNJ3ELPrf4SwDkJnY+K/jqvMlFTFJFkgg==",
+      "path": "asyncawaitbestpractices.mvvm/5.1.0",
+      "hashPath": "asyncawaitbestpractices.mvvm.5.1.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
+      "path": "microsoft.netcore.platforms/2.0.0",
+      "hashPath": "microsoft.netcore.platforms.2.0.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YrzNWduCDHhUaSRBxHxL11UkM2fD6y8hITHis4/LbQZ6vj3vdRjoH3IoPWWC9uDXK2wHIqn+b5gv1Np/VKyM1g==",
+      "path": "system.runtime.compilerservices.unsafe/4.5.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512"
+    },
+    "System.Text.Encoding.CodePages/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S0wEUiKcLvRlkFUXca8uio1UQ5bYQzYgOmOKtCqaBQC3GR9AJjh43otcM32IGsAyvadFTaAMw9Irm6dS4Evfng==",
+      "path": "system.text.encoding.codepages/4.5.0",
+      "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
+    },
+    "System.Windows.Interactivity.WPF/2.0.20525": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0r+Le4E7hCm4zToUvBzjSUyTcuU3rFeoPa7JyTdWIzR/F7wH6+O/pWkjHIG40hIA0z1wvRdZayvoizA4wcK1dg==",
+      "path": "system.windows.interactivity.wpf/2.0.20525",
+      "hashPath": "system.windows.interactivity.wpf.2.0.20525.nupkg.sha512"
+    }
+  }
+}

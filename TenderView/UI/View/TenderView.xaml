@@ -1,0 +1,139 @@
+﻿<Window x:Class="TenderView.UI.View.TenderView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:modelView="clr-namespace:TenderView.UI.ModelView"
+        mc:Ignorable="d"
+        Title="Tender View" Height="720" Width="1080">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
+        </Style>
+    </Window.Resources>
+    <Window.DataContext>
+        <modelView:TradeViewModel />
+    </Window.DataContext>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+            <TextBlock Text="Номер тендера: " />
+            <TextBox Text="{Binding InputTradeId, UpdateSourceTrigger=PropertyChanged}"
+                     MaxLength="10"
+                     Width="100">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewTextInput">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="NumberValidator" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Button Command="{Binding AddTrade}"
+                    CommandParameter="{Binding InputTradeId}">
+                +
+            </Button>
+        </StackPanel>
+
+        <Grid Background="#F5F5F5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="0.4*" />
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Column="0">
+                <TextBlock DockPanel.Dock="Top" Text="Тендеры" FontWeight="Thin" TextAlignment="Center" />
+                <ListBox ItemsSource="{Binding Trades}"
+                         SelectedItem="{Binding SelectedTrade}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock FontSize="18" Text="{Binding Path=Trade.id}" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Path=Trade.tradeStateName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+            <DockPanel Grid.Column="1">
+                <TextBlock DockPanel.Dock="Top" Text="Описание" FontWeight="Thin" TextAlignment="Center" />
+                <StackPanel DataContext="{Binding SelectedTrade}" Margin="5,5,0,0">
+                    <TextBlock Text="Номер тендера" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Trade.id, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Название тендера" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Trade.tradeName, UpdateSourceTrigger=PropertyChanged}"
+                               TextWrapping="Wrap" />
+                    <TextBlock Text="Статус" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Trade.tradeStateName, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Заказчик" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Trade.customerFullName, UpdateSourceTrigger=PropertyChanged}"
+                               TextWrapping="Wrap" />
+                    <TextBlock Text="Начальная максимальная цена" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Trade.initialPrice, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Место поставки" FontWeight="Bold" />
+                    <TextBlock Text="{Binding TradeDetail.deliveryAddress, UpdateSourceTrigger=PropertyChanged}"
+                               TextWrapping="Wrap" />
+                    <TextBlock Text="Дата публикации" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Trade.publicationDate, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Дата окончания подачи заявок" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Trade.fillingApplicationEndDate, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </DockPanel>
+
+            <DockPanel Grid.Column="2">
+                <TextBlock DockPanel.Dock="Top" Text="Лоты" FontWeight="Thin" TextAlignment="Center" />
+                <ListBox ItemsSource="{Binding SelectedTrade.TradeDetail.purchaseObjects}"
+                         SelectedItem="{Binding SelectedTrade.SelectedTradeDocument}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock Text="Название:" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Path=name}" TextWrapping="Wrap" />
+                                <TextBlock Text="Колличество:" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Path=quantity}" />
+                                <TextBlock Text="Ед. измерения:" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Path=unitName}" />
+                                <TextBlock Text="Цена за штуку:" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Path=priceForOne}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+
+            <DockPanel Grid.Column="3">
+                <TextBlock DockPanel.Dock="Top" Text="Файлы" FontWeight="Thin" TextAlignment="Center" />
+                <ListBox ItemsSource="{Binding SelectedTrade.TradeDocuments}"
+                         SelectedItem="{Binding SelectedTrade.SelectedTradeDocument}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction
+                                Command="{Binding Mode=OneWay, Path=OpenFileInBrowser}"
+                                CommandParameter="{Binding SelectedTrade.SelectedTradeDocument.url}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock FontSize="15" Text="{Binding Path=type}"
+                                           FontWeight="Bold" TextWrapping="Wrap" />
+                                <TextBlock FontSize="10" Text="{Binding Path=fileName}"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
+</Window>
